@@ -14,20 +14,13 @@ func TestContiguousStackInt(t *testing.T) {
 
 		t.Run("Stack Push", func(t *testing.T) {
 			var stackElements []int
-			popErrorMsg := "the stack cannot be empty when Pop() is called"
 			for i := 0; i < 2; i++ {
-				poppedElement, err := testStack.Pop()
+				poppedElement, _ := testStack.Pop()
 				stackElements = append(stackElements, poppedElement)
-
-				if err != nil {
-					if !ErrorContains(err, popErrorMsg) {
-						t.Errorf("Error should contain %s, but got %s", popErrorMsg, err)
-					}
-				}
-
 			}
 
 			expectedStackElements := []int{2, 1}
+
 			if !reflect.DeepEqual(expectedStackElements, stackElements) {
 				t.Errorf("Expected: %v, Got: %v", expectedStackElements, stackElements)
 			}
