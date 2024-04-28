@@ -113,17 +113,16 @@ func TestContiguousStackInt(t *testing.T) {
 		testStack.Clear()
 
 		t.Run("Stack Custom Error", func(t *testing.T) {
-			popErrorMsg := "Stack is empty. Zero value of the elements type returned"
-			peekErrorMsg := "Stack is empty. Zero value of the elements type returned"
+			ExpectedErrorMsg := "Stack is empty. Zero value of the elements type returned"
 
 			_, err := testStack.Pop()
-			if !ErrorContains(err, popErrorMsg) {
-				t.Errorf("Error should contain %s, but got %s", popErrorMsg, err)
+			if !ErrorContains(err, ExpectedErrorMsg) {
+				t.Errorf("Error should contain %s, but got %s", ExpectedErrorMsg, err)
 			}
 
 			_, err = testStack.Peek()
-			if !ErrorContains(err, peekErrorMsg) {
-				t.Errorf("Error should contain %s, but got %s", peekErrorMsg, err)
+			if !ErrorContains(err, ExpectedErrorMsg) {
+				t.Errorf("Error should contain %s, but got %s", ExpectedErrorMsg, err)
 			}
 		})
 
