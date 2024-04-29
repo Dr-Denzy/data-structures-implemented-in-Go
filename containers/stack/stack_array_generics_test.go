@@ -74,7 +74,7 @@ func TestContiguousStackInt(t *testing.T) {
 			}
 		})
 
-		t.Run("Stack Empty", func(t *testing.T) {
+		t.Run("Stack IsEmpty", func(t *testing.T) {
 			if testStack.IsEmpty() == true {
 				t.Errorf("Expected stack to NOT be empty: %v; Got: %v", testStack.Size(), testStack.IsEmpty())
 			}
