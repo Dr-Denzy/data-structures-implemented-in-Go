@@ -43,10 +43,6 @@ func TestCircularQueue(t *testing.T) {
 				t.Errorf("Circular Queue dequeue error: expected 7, got %v", item)
 			}
 
-			//expected := []int{0, 20, 0}
-			//if !reflect.DeepEqual(testCQ.buffer, expected) {
-			//	t.Errorf("Circular Queue enqueue error: expected %v, got %v", expected, testCQ.buffer)
-			//}
 		})
 
 		t.Run("Circular Queue: Front", func(t *testing.T) {
