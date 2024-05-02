@@ -89,7 +89,7 @@ func (q *CircularQueue[T]) Dequeue() (T, error) {
 	if q.IsEmpty() {
 		var zeroValue T
 		return zeroValue, &containers.CustomError{
-			Msg:  fmt.Sprintf("queue is empty: zero-value of data type returned: %v", zeroValue),
+			Msg:  fmt.Sprintf("queue is empty. zero-value of data type %T returned", zeroValue),
 			Item: zeroValue,
 		}
 	}
@@ -111,7 +111,7 @@ func (q *CircularQueue[T]) Front() (T, error) {
 	if q.IsEmpty() {
 		var zeroValue T
 		return zeroValue, &containers.CustomError{
-			Msg:  fmt.Sprintf("queue is empty: zero-value of data type returned: %v", zeroValue),
+			Msg:  fmt.Sprintf("queue is empty. zero-value of data type %T returned", zeroValue),
 			Item: zeroValue,
 		}
 	}
@@ -123,7 +123,7 @@ func (q *CircularQueue[T]) Back() (T, error) {
 	if q.IsEmpty() {
 		var zeroValue T
 		return zeroValue, &containers.CustomError{
-			Msg:  fmt.Sprintf("queue is empty: zero-value of data type returned: %v", zeroValue),
+			Msg:  fmt.Sprintf("queue is empty. zero-value of data type %T returned", zeroValue),
 			Item: zeroValue,
 		}
 	}
