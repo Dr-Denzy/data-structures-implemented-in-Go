@@ -5,13 +5,6 @@ import (
 	"github.com/drdenzy/containers"
 )
 
-type Stack interface {
-	containers.Container
-	Push(e any)
-	Pop() (e any, err error)
-	Peek() (e any, err error)
-}
-
 type ContiguousStack[T any] struct {
 	elements []T
 }
@@ -47,7 +40,7 @@ func (s *ContiguousStack[T]) Pop() (T, error) {
 	if s.Size() == 0 {
 		var zeroValue T
 		//return zeroValue, errors.New("the stack cannot be empty when Pop() is called")
-		return zeroValue, &CustomStackError{
+		return zeroValue, &containers.CustomError{
 			Msg:  fmt.Sprintf("Stack is empty. Zero value of the elements type returned: %v", zeroValue),
 			Item: zeroValue,
 		}
@@ -66,7 +59,7 @@ func (s *ContiguousStack[T]) Pop() (T, error) {
 func (s *ContiguousStack[T]) Peek() (T, error) {
 	if s.Size() == 0 {
 		var zeroValue T
-		return zeroValue, &CustomStackError{
+		return zeroValue, &containers.CustomError{
 			Msg:  fmt.Sprintf("Stack is empty. Zero value of the elements type returned: %v", zeroValue),
 			Item: zeroValue,
 		}

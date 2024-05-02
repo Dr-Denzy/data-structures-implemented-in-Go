@@ -1,6 +1,7 @@
 package stack
 
 import (
+	"github.com/drdenzy/containers"
 	"reflect"
 	"testing"
 )
@@ -79,13 +80,13 @@ func TestDoublyLinkedStackInt(t *testing.T) {
 
 			_, err := testDLS.Pop()
 
-			if !ErrorContains(err, expectedErrorMsg) {
+			if !containers.ErrorContains(err, expectedErrorMsg) {
 				t.Errorf("expected: %v, got: %v", expectedErrorMsg, err)
 			}
 
 			_, err = testDLS.Peek()
 
-			if !ErrorContains(err, expectedErrorMsg) {
+			if !containers.ErrorContains(err, expectedErrorMsg) {
 				t.Errorf("expected: %v, got: %v", expectedErrorMsg, err)
 			}
 		})

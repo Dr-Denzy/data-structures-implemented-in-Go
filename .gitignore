@@ -23,3 +23,6 @@ go.work
 # IDEs
 .idea
 .vscode
+
+# not be committed
+containers/main/

@@ -1,6 +1,7 @@
 package stack
 
 import (
+	"github.com/drdenzy/containers"
 	"reflect"
 	"testing"
 )
@@ -36,7 +37,7 @@ func TestContiguousStackInt(t *testing.T) {
 
 			poppedItem, err := testStack.Pop()
 
-			if !ErrorContains(err, popErrorMsg) {
+			if !containers.ErrorContains(err, popErrorMsg) {
 				t.Errorf("Error should contain %s, but got %s", popErrorMsg, err)
 			}
 
@@ -58,7 +59,7 @@ func TestContiguousStackInt(t *testing.T) {
 			peekErrorMsg := ""
 			topItem, err := testStack.Peek()
 
-			if !ErrorContains(err, peekErrorMsg) {
+			if !containers.ErrorContains(err, peekErrorMsg) {
 				t.Errorf("Error should contain %s, but got %s", peekErrorMsg, err)
 			}
 
@@ -109,12 +110,12 @@ func TestContiguousStackInt(t *testing.T) {
 			ExpectedErrorMsg := "Stack is empty. Zero value of the elements type returned"
 
 			_, err := testStack.Pop()
-			if !ErrorContains(err, ExpectedErrorMsg) {
+			if !containers.ErrorContains(err, ExpectedErrorMsg) {
 				t.Errorf("Error should contain %s, but got %s", ExpectedErrorMsg, err)
 			}
 
 			_, err = testStack.Peek()
-			if !ErrorContains(err, ExpectedErrorMsg) {
+			if !containers.ErrorContains(err, ExpectedErrorMsg) {
 				t.Errorf("Error should contain %s, but got %s", ExpectedErrorMsg, err)
 			}
 		})

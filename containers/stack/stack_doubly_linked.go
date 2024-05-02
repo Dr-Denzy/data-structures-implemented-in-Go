@@ -2,6 +2,7 @@ package stack
 
 import (
 	"fmt"
+	"github.com/drdenzy/containers"
 )
 
 type dnode[T any] struct {
@@ -11,8 +12,8 @@ type dnode[T any] struct {
 }
 
 type DoublyLinkedStack[T any] struct {
-	top       *dnode[T]
-	stackSize int
+	top  *dnode[T]
+	size int
 }
 
 func NewDoublyLinkedStack[T any]() *DoublyLinkedStack[T] {
@@ -20,11 +21,11 @@ func NewDoublyLinkedStack[T any]() *DoublyLinkedStack[T] {
 }
 
 func (s *DoublyLinkedStack[T]) Size() int {
-	return s.stackSize
+	return s.size
 }
 
 func (s *DoublyLinkedStack[T]) IsEmpty() bool {
-	return s.stackSize == 0
+	return s.size == 0
 }
 
 func (s *DoublyLinkedStack[T]) Push(data T) {
@@ -35,13 +36,13 @@ func (s *DoublyLinkedStack[T]) Push(data T) {
 		s.top.prev = newNode
 	}
 	s.top = newNode
-	s.stackSize++
+	s.size++
 }
 
 func (s *DoublyLinkedStack[T]) Pop() (T, error) {
 	if s.IsEmpty() {
 		var zeroValue T
-		return zeroValue, &CustomStackError{
+		return zeroValue, &containers.CustomError{
 			Msg:  fmt.Sprintf("Stack is empty. Zero value of the data type returned: %v", zeroValue),
 			Item: zeroValue,
 		}
@@ -51,14 +52,14 @@ func (s *DoublyLinkedStack[T]) Pop() (T, error) {
 	if s.top != nil {
 		s.top.prev = nil
 	}
-	s.stackSize--
+	s.size--
 	return poppedItem, nil
 }
 
 func (s *DoublyLinkedStack[T]) Peek() (T, error) {
 	if s.IsEmpty() {
 		var zeroValue T
-		return zeroValue, &CustomStackError{
+		return zeroValue, &containers.CustomError{
 			Msg:  fmt.Sprintf("Stack is empty. Zero value of the data type returned: %v", zeroValue),
 			Item: zeroValue,
 		}
@@ -80,5 +81,5 @@ func (s *DoublyLinkedStack[T]) Display() []T {
 
 func (s *DoublyLinkedStack[T]) Clear() {
 	s.top = nil
-	s.stackSize = 0
+	s.size = 0
 }

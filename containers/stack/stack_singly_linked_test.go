@@ -1,6 +1,7 @@
 package stack
 
 import (
+	"github.com/drdenzy/containers"
 	"reflect"
 	"testing"
 )
@@ -82,13 +83,13 @@ func TestLinkedStackInt(t *testing.T) {
 
 			_, err := testStack.Pop()
 
-			if !ErrorContains(err, expectedErrorMsg) {
+			if !containers.ErrorContains(err, expectedErrorMsg) {
 				t.Errorf("expected: %v, got: %v", expectedErrorMsg, err)
 			}
 
 			_, err = testStack.Peek()
 
-			if !ErrorContains(err, expectedErrorMsg) {
+			if !containers.ErrorContains(err, expectedErrorMsg) {
 				t.Errorf("expected: %v, got: %v", expectedErrorMsg, err)
 			}
 

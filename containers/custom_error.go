@@ -1,13 +1,13 @@
-package stack
+package containers
 
 import "strings"
 
-type CustomStackError struct {
+type CustomError struct {
 	Msg  string
 	Item any
 }
 
-func (e *CustomStackError) Error() string {
+func (e *CustomError) Error() string {
 	return e.Msg
 }
 
